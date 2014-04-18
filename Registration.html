@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Registration</title>
+    <link href="Css/bootstrap.min.css" rel="stylesheet" />
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link href="Css/StyleSheet.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var RegSex = 1;
+            var lookingfor = 1;
+            var BirthYear = 0;
+            var BirthMonth = 0;
+            var BirthDay = 0;
+            var zipcode = undefined;
+            var username = undefined;
+            $('.RegMen').click(function () {
+                $('.RegMen').removeClass('RegActive');
+                $(this).addClass('RegActive');
+                RegSex = $(this).attr('data-reg');
+            });
+            $('#btnRegistration').click(function () {
+                $('#Step1').css('display', 'none');
+                $('#Step2').css('display', 'block');
+                $('#btnProcess2').addClass('StepActive');
+                $('#btnProcess1').removeClass('StepActive');
+            });
+
+            $('.RegMenLokking').click(function () {
+
+                $('.RegMenLokking').removeClass('RegMenLokkingActive');
+                $(this).addClass('RegMenLokkingActive');
+                lookingfor = $(this).attr('data-reg');
+            });
+            $('#btnLookingFor').click(function () {
+                $('#Step2').css('display', 'none');
+                $('#Step3').css('display', 'block');
+                $('#btnProcess3').addClass('StepActive');
+                $('#btnProcess2').removeClass('StepActive');
+            });
+
+            $('#AgeCalculate').click(function () {
+                var Age = $('#txtAge').val();
+                var CurrentYear = new Date().getFullYear();
+                BirthYear = CurrentYear - Age;
+
+                BirthDay = getRandomInt(1, 28);
+                BirthMonth = getRandomInt(1, 12);
+
+                $('#Step3').css('display', 'none');
+                $('#Step4').css('display', 'block');
+                $('#btnProcess4').addClass('StepActive');
+                $('#btnProcess3').removeClass('StepActive');
+            });
+            $('#btnZipcode').click(function () {
+                zipcode = $('#txtZip').val();
+                if (!checkZip(zipcode)) {
+                    $('#errorMessageZip').css('display', 'block');
+                    return false;
+                }
+                $('#Step4').css('display', 'none');
+                $('#Step5').css('display', 'block');
+                $('#btnProcess5').addClass('StepActive');
+                $('#btnProcess4').removeClass('StepActive');
+            });
+
+            $('#btnSubmit').click(function () {
+                var email = $('#txtEmail').val();
+                var splitemail = email.substring(0, 6);
+                username = splitemail + rand(1) + getRandomInt(10, 99);
+                var url = "http://m.likemyphoto.com/p/register.cgi?email=" + email + "&REG_handle=" + username + "&country=United%20States&bday_year=" + BirthYear + "&bday_day=" + BirthDay + "&bday_month=" + BirthMonth + "&zip=" + zipcode + "&sex=" + RegSex + "&looking_for_person=" + lookingfor;
+                window.location.href = url;
+
+            });
+            function getRandomInt(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            function checkZip(value) {
+                return (/(^\d{5}$)|(^\d{5}-\d{4}$)/).test(value);
+            }
+            function rand(length, current) {
+                current = current ? current : '';
+                return length ? rand(--length, "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz".charAt(Math.floor(Math.random() * 60)) + current) : current;
+            }
+
+        });
+    </script>
+</head>
+
+<body>
+    <div id="maincontainer">
+        <div class="container">
+            <div class="row mt40">
+                <div style="max-width: 320px; width: 320px; margin: 0 auto;">
+                    <h2 id="forms-example"> Registration Process</h2>
+                    <br />
+                    <div style="border-top: 1px solid #9999FF; width: 320px; margin: 0 auto;">
+
+                        <br />
+                        <div id="btnProcess1" class="btnProcess StepActive" style="margin-left:35px;">
+                            1
+                        </div>
+                        <div id="btnProcess2" class="btnProcess">
+                            2
+                        </div>
+                        <div id="btnProcess3" class="btnProcess">
+                            3
+                        </div>
+                        <div id="btnProcess4" class="btnProcess">
+                            4
+                        </div>
+                        <div id="btnProcess5" class="btnProcess">
+                            5
+                        </div>
+                        <div style="clear:both; height:10px;"></div>
+                    </div>
+
+                    <form role="form" class="bs-example">
+                        <div id="Step1">
+                            <div class="form-group" style="text-align:center;">
+                                <br />
+                                <strong> I'm a</strong><br />
+                            </div>
+                            <div>
+                                <div class="RegMen RegActive" data-reg="1" style="margin-left:45px;">Men</div>
+                                <div class="RegMen" data-reg="2">Women</div>
+                                <div class="RegMen" data-reg="3">Couple</div>
+                                <div style="clear:both; height:10px;"></div>
+                            </div>
+                            <div class="form-group">
+                                <button id="btnRegistration" class="btnNext" type="button">Next</button>
+                            </div>
+                        </div>
+                        <div id="Step2">
+                            <div class="form-group" style="text-align:center;">
+                                <br />
+                                <strong> Looking for a</strong><br />
+                            </div>
+                            <div>
+                                <div class="RegMenLokking RegMenLokkingActive" data-reg="1" style="margin-left:45px;">Women</div>
+                                <div class="RegMenLokking" data-reg="2">Men</div>
+                                <div class="RegMenLokking" data-reg="3">Couple</div>
+                                <div style="clear: both; height: 10px;"></div>
+                            </div>
+                            <div class="form-group">
+                                <button class="btnNext" type="button" id="btnLookingFor">Next</button>
+                            </div>
+                        </div>
+                        <div id="Step3">
+                            <div class="form-group" style="text-align:center;">
+                                <label for="txtAge">My Age is</label>
+                                <input type="text" id="txtAge" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <button class="btnNext" type="button" id="AgeCalculate">Next</button>
+                            </div>
+                        </div>
+                        <div id="Step4">
+                            <div class="form-group" style="text-align:center;">
+                                <label for="txtZip">Near</label>
+                                <input type="text" id="txtZip" class="form-control">
+                            </div>
+                            <div class="form-group" style="text-align:center;">
+                                <span id="errorMessageZip" style="display:none;">
+                                    <strong>
+                                        Not in
+                                        <a href="#" style="text-decoration:underline;">
+                                            United State?
+                                        </a>
+                                    </strong>
+                                </span>
+                                <button class="btnNext" type="button" id="btnZipcode">Next</button>
+                            </div>
+                        </div>
+                        <div id="Step5">
+                            <div class="form-group" style="text-align:center;">
+                                <label for="txtEmail">Enter email</label>
+                                <input type="text" id="txtEmail" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <button class="btnNext" type="button" id="btnSubmit">Finish</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

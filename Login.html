@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="Css/bootstrap.min.css" rel="stylesheet" />
+    <link href="Css/StyleSheet.css" rel="stylesheet" />
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <title>Login</title>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var validate = true;
+            $('#btnLogin').click(function () {
+                var user = $('#txtUsername').val();
+                var password = $('#txtPassword').val();
+
+                if (user == undefined || user == '')
+                    validate = false;
+                if (password == undefined || password == '')
+                    validate = false;
+
+                if (validate == false) {
+                    $('#errorMeswsage').text('Please enter a username or password');
+                    return false;
+                }
+                else
+                    window.location.href = "http://likemyphoto.com/p/login.cgi?handle=" + user + "&password=" + password;
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="maincontainer">
+        <div class="container">
+            <div class="row mt40">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2 id="forms-example"> Login</h2>
+                    <form role="form" class="bs-example">
+                        <div class="form-group">
+                            <span id="errorMeswsage" style=" color:red;"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtUsername">Username or Email</label>
+                            <input type="text" id="txtUsername" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtPassword">Password</label>
+                            <input type="password" id="txtPassword" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <button id="btnLogin" class="btnlogin" type="button">LOGIN</button>
+                        </div>
+                        <div class="form-group" style="text-align:center;">
+
+                            <strong> --OR--</strong><br />
+                        </div>
+
+                        <div class="form-group">
+                            <a href="Registration.html">
+                                <button class="btnlogin" type="button" style="background-color: #9999FF;">
+                                    CREATE NEW ACCOUNT
+                                </button>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

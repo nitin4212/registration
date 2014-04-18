@@ -1,0 +1,123 @@
+﻿.form-control {
+    padding: 3px 10px;
+    border-radius: 0;
+    background-color: lightcyan;
+    border: solid 1px #e1e1e1;
+}
+
+.btnlogin {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.428571429;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    background-color: red;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    width: 100%;
+    font-weight: bold;
+}
+
+.btnProcess {
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 20px;
+    background-color: #e1e1e1;
+    width: 40px;
+    margin-left: 5px;
+    margin-right: 0px;
+    float: left;
+    font-weight: bold;
+}
+
+.StepActive {
+    background-color: #9999FF !important;
+}
+
+.RegMen {
+    /* width: 50px; */
+    padding: 5px 0;
+    background-color: white;
+    border-radius: 5px;
+    max-width: 100px;
+    width: 60px;
+    text-align: center;
+    margin-right: 10px;
+    float: left;
+    border: solid 1px #d1d1d1;
+    cursor: pointer;
+}
+.RegActive:hover {
+    background-color: palegreen;
+}
+.RegActive {
+    background-color: palegreen;
+}
+.RegMenLokking {
+    padding: 5px 0;
+    background-color: white;
+    border-radius: 5px;
+    max-width: 100px;
+    width: 60px;
+    text-align: center;
+    margin-right: 10px;
+    float: left;
+    border: solid 1px #d1d1d1;
+    cursor: pointer;
+}
+
+.RegMenLokking:hover {
+    background-color: palegreen;
+}
+.RegMenLokkingActive {
+    background-color: palegreen;
+}
+
+.btnNext {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.428571429;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid green;
+    background-color: palegreen;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    width: 100%;
+    font-weight: bold;
+    border-radius: 5px;
+    color: green;
+}
+
+#Step2 {
+    display: none;
+}
+
+#Step3 {
+    display: none;
+}
+
+#Step4 {
+    display: none;
+}
+
+#Step5 {
+    display: none;
+}
